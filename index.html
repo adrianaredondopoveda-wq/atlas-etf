@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Comparador de cotizaciones reales de ETF en seis mercados europeos, con normalización a euros."
+    />
+    <title>Atlas ETF - Comparador internacional</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Saltar al contenido</a>
+
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Atlas ETF, inicio">
+        <span class="brand-mark" aria-hidden="true">A</span>
+        <span>ATLAS ETF</span>
+      </a>
+
+      <nav class="primary-nav" aria-label="Navegación principal">
+        <button class="nav-item nav-item-active" type="button">Comparador</button>
+        <button class="nav-item" type="button" data-toast="La watchlist estará disponible en la siguiente iteración.">Watchlist</button>
+        <button class="nav-item" type="button" data-scroll-to="methodology">Metodología</button>
+      </nav>
+
+      <div class="topbar-actions">
+        <span class="market-state" id="market-state">Conectando con mercados</span>
+        <button class="button button-quiet" id="theme-toggle" type="button" aria-label="Cambiar tema">Tema</button>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section class="workspace-header" aria-labelledby="page-title">
+        <div>
+          <p class="eyebrow">ETF en Europa</p>
+          <h1 id="page-title">Un ETF. Varias plazas. Una moneda.</h1>
+          <p class="intro-copy">Cotizaciones públicas reales de seis mercados, normalizadas a euros para comparar el mismo fondo entre países.</p>
+        </div>
+
+        <div class="header-actions">
+          <button class="button button-secondary" id="export-button" type="button">Exportar CSV</button>
+          <button class="button button-primary" id="refresh-button" type="button">Reconectar</button>
+        </div>
+      </section>
+
+      <section class="control-deck" aria-label="Filtros de comparación">
+        <div class="field field-search">
+          <label for="search-input">Buscar ETF, ticker o ISIN</label>
+          <input id="search-input" type="search" placeholder="Ej. BBVAI o ES0105336038" autocomplete="off" />
+          <span class="field-help">Busca por fondo, índice, ticker, ISIN, país o mercado.</span>
+        </div>
+
+        <div class="field">
+          <label for="fund-select">Universo</label>
+          <select id="fund-select"></select>
+          <span class="field-help">Incluye fondos con varias cotizaciones internacionales.</span>
+        </div>
+
+        <div class="field">
+          <label for="market-select">Mercado</label>
+          <select id="market-select"></select>
+          <span class="field-help">Filtra una plaza o compara todas.</span>
+        </div>
+
+        <div class="field">
+          <label for="session-select">Estado del mercado</label>
+          <select id="session-select">
+            <option value="all">Todos</option>
+            <option value="open">Abiertos</option>
+            <option value="closed">Cerrados</option>
+          </select>
+          <span class="field-help">El horario se calcula en la zona local de cada bolsa.</span>
+        </div>
+      </section>
+
+      <section class="metrics" aria-label="Resumen del ETF seleccionado">
+        <article class="metric metric-primary">
+          <span class="metric-label">Mayor subida</span>
+          <strong id="best-ask">-</strong>
+          <span id="best-ask-market" class="metric-meta">-</span>
+        </article>
+        <article class="metric">
+          <span class="metric-label">Mayor volumen</span>
+          <strong id="best-bid">-</strong>
+          <span id="best-bid-market" class="metric-meta">-</span>
+        </article>
+        <article class="metric">
+          <span class="metric-label">Mayor diferencia entre plazas</span>
+          <strong id="cross-spread">-</strong>
+          <span class="metric-meta">Mismo ISIN, precios convertidos a EUR</span>
+        </article>
+        <article class="metric">
+          <span class="metric-label">Cotizaciones visibles</span>
+          <strong id="market-count">-</strong>
+          <span id="open-count" class="metric-meta">Mercados públicos</span>
+        </article>
+      </section>
+
+      <section class="comparison-shell" aria-labelledby="comparison-title">
+        <div class="section-heading">
+          <div>
+            <h2 id="comparison-title">Comparador internacional</h2>
+            <p id="fund-description">Cargando cotizaciones reales de mercados europeos.</p>
+          </div>
+          <div class="table-tools">
+            <label class="compact-field" for="sort-select">
+              Ordenar
+              <select id="sort-select">
+                <option value="change">Mayor variación</option>
+                <option value="last">Mayor precio en EUR</option>
+                <option value="gap">Mayor diferencia entre plazas</option>
+                <option value="volume">Mayor volumen</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <div id="status-region" class="status-region" aria-live="polite"></div>
+
+        <div class="table-scroll" id="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">ETF</th>
+                <th scope="col">Mercado</th>
+                <th scope="col">Ticker</th>
+                <th scope="col">ISIN</th>
+                <th scope="col" class="numeric">Precio nativo</th>
+                <th scope="col" class="numeric">Precio EUR</th>
+                <th scope="col" class="numeric">Dif. mejor plaza</th>
+                <th scope="col" class="numeric">Variación</th>
+                <th scope="col" class="numeric">Volumen</th>
+                <th scope="col">Fuente</th>
+                <th scope="col">Estado</th>
+              </tr>
+            </thead>
+            <tbody id="quotes-body"></tbody>
+          </table>
+        </div>
+
+        <div class="empty-state" id="empty-state" hidden>
+          <strong>No hay cotizaciones que coincidan.</strong>
+          <p>Prueba otro ticker, ISIN o estado de mercado.</p>
+          <button class="button button-secondary" id="reset-filters" type="button">Restablecer</button>
+        </div>
+      </section>
+
+      <section class="methodology" id="methodology" aria-labelledby="methodology-title">
+        <div>
+          <h2 id="methodology-title">Qué muestran estos datos</h2>
+          <p>Atlas conserva el precio original y añade una conversión comparable a euros. Nunca rellena cotizaciones ausentes.</p>
+        </div>
+        <dl class="method-grid">
+          <div>
+            <dt>España oficial</dt>
+            <dd>BME aporta datos oficiales públicos con 15 minutos de retraso.</dd>
+          </div>
+          <div>
+            <dt>Mercados internacionales</dt>
+            <dd>Yahoo Finance aporta precios públicos reales con retraso variable y sin garantía de continuidad.</dd>
+          </div>
+          <div>
+            <dt>Comparación orientativa</dt>
+            <dd>El BCE actualiza la divisa a diario. Sin bid, ask y datos sincronizados, la diferencia no es arbitraje ejecutable.</dd>
+          </div>
+        </dl>
+      </section>
+    </main>
+
+    <footer>
+      <span>Atlas ETF</span>
+      <span>Fuentes: BME, Yahoo Finance y Banco Central Europeo. Datos públicos con distintos retrasos.</span>
+    </footer>
+
+    <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+    <script src="./app.js" defer></script>
+  </body>
+</html>

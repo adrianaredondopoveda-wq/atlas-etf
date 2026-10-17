@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: atlas-etf
+    runtime: python
+    plan: free
+    buildCommand: "true"
+    startCommand: python3 server.py
+    healthCheckPath: /api/status
+    autoDeployTrigger: commit
+    envVars:
+      - key: ATLAS_HOST
+        value: 0.0.0.0
+      - key: ATLAS_POLL_SECONDS
+        value: 60
+      - key: PYTHON_VERSION
+        value: 3.13.5

@@ -1,0 +1,102 @@
+{
+  "funds": [
+    {
+      "id": "bbva-eurostoxx50",
+      "isin": "ES0105321030",
+      "name": "Acción Eurostoxx 50 ETF, FI Cotizado Armonizado",
+      "index": "EURO STOXX 50",
+      "domicile": "España",
+      "listings": [
+        { "id": "bbvae-bme", "exchange": "BME Madrid", "country": "España", "ticker": "BBVAE", "currency": "EUR", "provider": "bme" }
+      ]
+    },
+    {
+      "id": "bbva-ibex35",
+      "isin": "ES0105336038",
+      "name": "Acción IBEX 35 ETF, FI Cotizado Armonizado",
+      "index": "IBEX 35",
+      "domicile": "España",
+      "listings": [
+        { "id": "bbvai-bme", "exchange": "BME Madrid", "country": "España", "ticker": "BBVAI", "currency": "EUR", "provider": "bme" }
+      ]
+    },
+    {
+      "id": "amundi-ibex35",
+      "isin": "FR0010251744",
+      "name": "Amundi IBEX 35 UCITS ETF",
+      "index": "IBEX 35",
+      "domicile": "Francia",
+      "listings": [
+        { "id": "lyxib-bme", "exchange": "BME Madrid", "country": "España", "ticker": "LYXIB", "currency": "EUR", "provider": "bme" }
+      ]
+    },
+    {
+      "id": "amundi-ibex35-acc",
+      "isin": "FR0010655746",
+      "name": "Amundi IBEX 35 UCITS ETF Acc",
+      "index": "IBEX 35",
+      "domicile": "Francia",
+      "listings": [
+        { "id": "amibx-bme", "exchange": "BME Madrid", "country": "España", "ticker": "AMIBX", "currency": "EUR", "provider": "bme" }
+      ]
+    },
+    {
+      "id": "amundi-ibex35-2x",
+      "isin": "FR0011042753",
+      "name": "Amundi IBEX 35 Doble Apalancado Diario (2x) UCITS ETF",
+      "index": "IBEX 35 Leveraged Net Return",
+      "domicile": "Francia",
+      "listings": [
+        { "id": "ibexa-bme", "exchange": "BME Madrid", "country": "España", "ticker": "IBEXA", "currency": "EUR", "provider": "bme" }
+      ]
+    },
+    {
+      "id": "amundi-ibex35-minus2x",
+      "isin": "FR0011036268",
+      "name": "Amundi IBEX 35 Doble Inverso Diario (-2x) UCITS ETF",
+      "index": "IBEX 35 Doble Inverso",
+      "domicile": "Francia",
+      "listings": [
+        { "id": "2inve-bme", "exchange": "BME Madrid", "country": "España", "ticker": "2INVE", "currency": "EUR", "provider": "bme" }
+      ]
+    },
+    {
+      "id": "ishares-core-msci-world",
+      "isin": "IE00B4L5Y983",
+      "name": "iShares Core MSCI World UCITS ETF USD (Acc)",
+      "index": "MSCI World",
+      "domicile": "Irlanda",
+      "listings": [
+        { "id": "swda-lse", "exchange": "London Stock Exchange", "country": "Reino Unido", "ticker": "SWDA.L", "currency": "GBp", "provider": "yahoo" },
+        { "id": "eunl-xetra", "exchange": "Xetra", "country": "Alemania", "ticker": "EUNL.DE", "currency": "EUR", "provider": "yahoo" },
+        { "id": "swda-milan", "exchange": "Borsa Italiana", "country": "Italia", "ticker": "SWDA.MI", "currency": "EUR", "provider": "yahoo" },
+        { "id": "iwda-amsterdam", "exchange": "Euronext Amsterdam", "country": "Países Bajos", "ticker": "IWDA.AS", "currency": "EUR", "provider": "yahoo" }
+      ]
+    },
+    {
+      "id": "ishares-core-sp500",
+      "isin": "IE00B5BMR087",
+      "name": "iShares Core S&P 500 UCITS ETF USD (Acc)",
+      "index": "S&P 500",
+      "domicile": "Irlanda",
+      "listings": [
+        { "id": "cspx-lse", "exchange": "London Stock Exchange", "country": "Reino Unido", "ticker": "CSPX.L", "currency": "USD", "provider": "yahoo" },
+        { "id": "sxr8-xetra", "exchange": "Xetra", "country": "Alemania", "ticker": "SXR8.DE", "currency": "EUR", "provider": "yahoo" },
+        { "id": "csspx-six", "exchange": "SIX Swiss Exchange", "country": "Suiza", "ticker": "CSSPX.SW", "currency": "USD", "provider": "yahoo" }
+      ]
+    },
+    {
+      "id": "invesco-eqqq-nasdaq100",
+      "isin": "IE0032077012",
+      "name": "Invesco EQQQ NASDAQ-100 UCITS ETF",
+      "index": "NASDAQ-100",
+      "domicile": "Irlanda",
+      "listings": [
+        { "id": "eqqq-lse-gbp", "exchange": "London Stock Exchange", "country": "Reino Unido", "ticker": "EQQQ.L", "currency": "GBp", "provider": "yahoo" },
+        { "id": "eqqu-lse-usd", "exchange": "London Stock Exchange", "country": "Reino Unido", "ticker": "EQQU.L", "currency": "USD", "provider": "yahoo" },
+        { "id": "eqqq-xetra", "exchange": "Xetra", "country": "Alemania", "ticker": "EQQQ.DE", "currency": "EUR", "provider": "yahoo" },
+        { "id": "eqqq-milan", "exchange": "Borsa Italiana", "country": "Italia", "ticker": "EQQQ.MI", "currency": "EUR", "provider": "yahoo" }
+      ]
+    }
+  ]
+}
